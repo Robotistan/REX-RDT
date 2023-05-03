@@ -30,6 +30,6 @@ There is a port for connecting and 1 buzzer and switch integrated into the card,
    EchoBot <echobot>
    LiFoBot <lifobot>
    SonicBot <sonicbot>
-
+   Components <components>
    
 
