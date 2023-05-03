@@ -6,7 +6,7 @@ How can I get PicoBricks to work when I split it?
 
 We can use the 12 modules on the PicoBricks by separating them from the break points and plugging them into the right connectors on the PicoBricks main board with a groove cable.
 
-.. figure:: ../_static/faq.png      
+.. figure:: ../_static/rex main.gif     
     :align: center
     :width: 620
     :figclass: align-center
