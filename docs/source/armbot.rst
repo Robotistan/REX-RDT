@@ -15,9 +15,6 @@ Arduino C Code of the Project
 
 .. code-block::
 
-//"""REX 8in1 Arm Bot"""
-//Check the web site for Robots https://rex-rdt.readthedocs.io/en/latest/
-
 #define CUSTOM_SETTINGS
 #define INCLUDE_GAMEPAD_MODULE
 #include <DabbleESP32.h>
