@@ -18,6 +18,3 @@ Arduino C Code of the Project
 
 .. image:: /../_static/arm-bot.png
 
-.. link:: https://github.com/Robotistan/REX-8in1-V2/blob/main/Robots%20%26%20Code/ArmBot/Arduino/ArmBot.ino
-:text: Click here to reach all of the code
-:title: Click here to reach all of the code
