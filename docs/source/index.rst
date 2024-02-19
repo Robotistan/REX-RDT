@@ -14,7 +14,7 @@ There is a port for connecting and 1 buzzer and switch integrated into the card,
 
 .. note::
 
-   This project is under active development..........deneme.......
+   This project is under active development.
    
 
 .. toctree::
