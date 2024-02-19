@@ -15,9 +15,8 @@ Arduino C Code of the Project
 
 .. code-block::
 
-    //"""REX 8in1 Arm Bot"""
 //Check the web site for Robots https://rex-rdt.readthedocs.io/en/latest/
-`````Arduino`````
+
 //"""REX 8in1 Arm Bot"""
 //Check the web site for Robots https://rex-rdt.readthedocs.io/en/latest/
 
@@ -35,6 +34,7 @@ enum MOTOR_TYPE {
 enum MOTOR_TYPE motorType = DC_MOTOR;
 
 //define Motor Pins
+`````Arduino`````
 #define MotorA1 15  // Forward
 #define MotorA2 23  // Backward
 
