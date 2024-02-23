@@ -14,8 +14,6 @@ Arduino C Code of the Project
 
 
 .. code-block::
-
-
 .. image:: /../_static/arm-bot.png
 
-[To access the entire code click here.](https://github.com/Robotistan/REX-8in1-V2/tree/main/Robots%20%26%20Code/ArmBot)
+<a href="https://github.com/Robotistan/REX-8in1-V2/tree/main/Robots%20%26%20Code/ArmBot" target="To access the entire code click here.">Bağlantı Metni</a>
