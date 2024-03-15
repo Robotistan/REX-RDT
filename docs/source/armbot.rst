@@ -20,4 +20,3 @@ Arduino C Code of the Project
 
 
 
-<a href="https://github.com/Robotistan/REX-8in1-V2/tree/main/Robots%20%26%20Code/ArmBot" target="To access the entire code click here.">Bağlantı Metni</a>
