@@ -2,7 +2,7 @@
 ArmBot
 ##############
 
-.. image:: /../_static/armbot-1.gif
+.. image:: /../_static/armbot-2.gif
 
 Introducing ArmBot, the amazing REX robot! 🚀🤖 ArmBot is equipped with a powerful robot arm 🤖💪, powered by 4 servo motors. With this ingenious feature, it can remotely control objects around it, making moving things from one point to another a breeze! 🎮📦
 This incredible robot arm can move in 4 different axes: up, down, right, and left, making it super versatile and agile! 💨💨 It can easily reach even the most challenging objects that were once hard to access. 🎯🏆No matter where an item is located, ArmBot can swiftly reach it with precision and grace. Its remarkable remote control capabilities enable it to handle tasks efficiently and effortlessly. 🎮🚀
