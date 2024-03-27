@@ -23,11 +23,11 @@ There is a port for connecting and 1 buzzer and switch integrated into the card,
 
    What is REX 8in1? <rex>
    ArmBot <armbot/armbot>
-   BalanceBot <balancebot>
-   OmniBot <omnibot>
+   BalanceBot <balancebot/balancebot>
+   OmniBot <omnibot/omnibot>
    RoverBot <roverbot>
    Wi-Bot <wibot>
-   SonicBot <sonicbot>
+   SonicBot <sonicbot/sonicbot>
    Components <components/components>
 
 
