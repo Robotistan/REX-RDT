@@ -5,7 +5,7 @@ REX Pin Diagram
 REX Main
 #################
 
-.. image:: /../_static/rex main.gif
+.. image:: /../_static/rexmain.gif
 
 ESP32 WROOM 32E Pinout
 #########################
