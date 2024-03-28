@@ -1,319 +1,343 @@
 ##############
-SonicBot
+RoverBot
 ##############
 
-.. image:: /../_static/sonicbot.gif
+.. image:: /../_static/roverbot.gif
 
-SonicBot detects objects by emitting sound waves around it thanks to the distance sensor on it and can perform different functions by using its mechanical properties according to the values it senses. You can avoid obstacles by using SonicBot. You can use SonicBot for tasks that require you to detect objects in the environment.
+RoverBot is a REX robot that allows you to move comfortably in difficult terrain conditions thanks to its crawler structure. With RoverBot, you can perform tasks that require rough, difficult terrain. Like other REX 8 in 1 robots, you can control the RoverBot remotely if you want, or you can move it autonomously with the code you wrote in it.
 
 
-SonicBot Arduino C Code
+RoverBot Arduino C Code
 -------------------------------
 
 
 .. code-block::
 
-    //"""REX 8in1 Sonic Bot"""
-    //Check the web site for Robots https://rex-rdt.readthedocs.io/en/latest/
-    
-    int trigPin = 17;    // Trigger
-    int echoPin = 16;    // Echo
-    long duration, cm;
-    
-    //define speed of motors
-    #define SLOW 120
-    #define MID 140
-    #define FAST 110
-    
-    //define pins of motors
-    #define MotorA1 15
-    #define MotorA2 23
-    
-    #define MotorB1 32
-    #define MotorB2 33
-    
-    #define MotorC1 5
-    #define MotorC2 4
-    
-    #define MotorD1 14
-    #define MotorD2 27
-    
-    //define buzzer pin named "horn"
-    #define horn 25
-    
-    //setting PWM properties
-    const int freq = 50;
-    const int PWMchannel_1 = 4;
-    const int PWMchannel_2 = 5;
-    const int PWMchannel_3 = 6;
-    const int PWMchannel_4 = 7;
-    const int PWMchannel_5 = 8;
-    const int PWMchannel_6 = 9;
-    const int PWMchannel_7 = 10;
-    const int PWMchannel_8 = 11;
-    
-    const int resolution = 8;
-    
-    void setup() {
-      Serial.begin (115200);   //make sure your Serial Monitor is also set at this baud rate.
-    
-      pinMode(trigPin, OUTPUT);
-      pinMode(echoPin, INPUT);
-    
-      pinMode(horn, OUTPUT);
-    
-      pinMode(MotorA1, OUTPUT);
-      pinMode(MotorA2, OUTPUT);
-    
-      pinMode(MotorB1, OUTPUT);
-      pinMode(MotorB2, OUTPUT);
-    
-      pinMode(MotorC1, OUTPUT);
-      pinMode(MotorC2, OUTPUT);
-    
-      pinMode(MotorD1, OUTPUT);
-      pinMode(MotorD2, OUTPUT);
-    
-      ledcSetup(PWMchannel_1, freq, resolution);
-      ledcAttachPin(MotorA1, PWMchannel_1);
-    
-      ledcSetup(PWMchannel_2, freq, resolution);
-      ledcAttachPin(MotorA2, PWMchannel_2);
-    
-      ledcSetup(PWMchannel_3, freq, resolution);
-      ledcAttachPin(MotorB1, PWMchannel_3);
-    
-      ledcSetup(PWMchannel_4, freq, resolution);
-      ledcAttachPin(MotorB2, PWMchannel_4);
-    
-      ledcSetup(PWMchannel_5, freq, resolution);
-      ledcAttachPin(MotorC1, PWMchannel_5);
-    
-      ledcSetup(PWMchannel_6, freq, resolution);
-      ledcAttachPin(MotorC2, PWMchannel_6);
-    
-      ledcSetup(PWMchannel_7, freq, resolution);
-      ledcAttachPin(MotorD1, PWMchannel_7);
-    
-      ledcSetup(PWMchannel_8, freq, resolution);
-      ledcAttachPin(MotorD2, PWMchannel_8);
-      delay(1500);
-    }
-    
-    void loop() {
-      distance();
-      if (cm < 8) {
-        backward();
-        digitalWrite(horn, HIGH);
-        delay(100);
-        digitalWrite(horn, LOW);
-        delay(1);
-        left();
-        stop();
-        delay(100);
-      }
-      else
-      {
-        forward();
-      }
-    }
-    
-    void forward() { 
-      ledcWrite(PWMchannel_1, MID); //MotorA1
-      ledcWrite(PWMchannel_2, LOW); //MotorA2
-    
-      ledcWrite(PWMchannel_3, MID); //MotorB1
-      ledcWrite(PWMchannel_4, LOW); //MotorB2
-    
-      ledcWrite(PWMchannel_5, MID); //MotorC1
-      ledcWrite(PWMchannel_6, LOW); //MotorC2
-    
-      ledcWrite(PWMchannel_7, MID); //MotorD1
-      ledcWrite(PWMchannel_8, LOW); //MotorD2
-    }
-    
-    void right() { 
-      ledcWrite(PWMchannel_1, LOW); //MotorA1
-      ledcWrite(PWMchannel_2, FAST); //MotorA2
-    
-      ledcWrite(PWMchannel_3, FAST); //MotorB1
-      ledcWrite(PWMchannel_4, LOW); //MotorB2
-    
-      ledcWrite(PWMchannel_5, LOW); //MotorC1
-      ledcWrite(PWMchannel_6, FAST); //MotorC2
-    
-      ledcWrite(PWMchannel_7, LOW); //MotorD1
-      ledcWrite(PWMchannel_8, FAST); //MotorD2
-      delay(1000);
-    }
-    
-    void left() { 
-      ledcWrite(PWMchannel_1, LOW); //MotorA1
-      ledcWrite(PWMchannel_2, MID); //MotorA2
-    
-      ledcWrite(PWMchannel_3, LOW); //MotorB1
-      ledcWrite(PWMchannel_4, MID); //MotorB2
-    
-      ledcWrite(PWMchannel_5, MID); //MotorC1
-      ledcWrite(PWMchannel_6, LOW); //MotorC2
-    
-      ledcWrite(PWMchannel_7, MID); //MotorD1
-      ledcWrite(PWMchannel_8, LOW); //MotorD2
-      delay(850);
-    }
-    
-    void stop() { 
-      ledcWrite(PWMchannel_1, LOW); //MotorA1
-      ledcWrite(PWMchannel_2, LOW); //MotorA2
-    
-      ledcWrite(PWMchannel_3, LOW); //MotorB1
-      ledcWrite(PWMchannel_4, LOW); //MotorB2
-    
-      ledcWrite(PWMchannel_5, LOW); //MotorC1
-      ledcWrite(PWMchannel_6, LOW); //MotorC2
-    
-      ledcWrite(PWMchannel_7, LOW); //MotorD1
-      ledcWrite(PWMchannel_8, LOW); //MotorD2
-    }
-    
-    void backward() { 
-      ledcWrite(PWMchannel_1, LOW); //MotorA1
-      ledcWrite(PWMchannel_2, SLOW); //MotorA2
-    
-      ledcWrite(PWMchannel_3, LOW); //MotorB1
-      ledcWrite(PWMchannel_4, SLOW); //MotorB2
-    
-      ledcWrite(PWMchannel_5, LOW); //MotorC1
-      ledcWrite(PWMchannel_6, SLOW); //MotorC2
-    
-      ledcWrite(PWMchannel_7, LOW); //MotorD1
-      ledcWrite(PWMchannel_8, SLOW); //MotorD2
-      delay(200);
-    }
-    
-    void distance() {
-      delay(40);
-      digitalWrite(trigPin, LOW);
-      delayMicroseconds(5);
-    
-      digitalWrite(trigPin, HIGH);
-      delayMicroseconds(10);
-    
-      digitalWrite(trigPin, LOW);
-    
-      duration = pulseIn(echoPin, HIGH);
-      cm = (duration / 2) / 29.1;
-      /* 
-      Serial.print(cm);
-      Serial.print("cm");
-      Serial.println();
-      */
-    }
-
-
-SonicBot MicroPython Code
--------------------------------
-
-
-.. code-block::
-
-    from machine import Pin, ADC, PWM
-    import time
-    from rex import HCSR04
-    
-    #motorA
-    motor_A1 = PWM(Pin(15))
-    motor_A1.duty_u16(0)
-    motor_A2 = PWM(Pin(23))
-    motor_A2.duty_u16(0)
-    
-    #motorB
-    motor_B1 = PWM(Pin(32))
-    motor_B1.duty_u16(0)
-    motor_B2 = PWM(Pin(33))
-    motor_B2.duty_u16(0)
-    
-    #motorC
-    motor_C1 = PWM(Pin(5))
-    motor_C1.duty_u16(0)
-    motor_C2 = PWM(Pin(4))
-    motor_C2.duty_u16(0)
-    
-    #motorD
-    motor_D1 = PWM(Pin(14))
-    motor_D1.duty_u16(0)
-    motor_D2 = PWM(Pin(27))
-    motor_D2.duty_u16(0)
-    
-    buzzer = Pin(25, Pin.OUT)
-    sensor = HCSR04(trigger_pin=17, echo_pin=16, echo_timeout_us=10000)
-    
-    #default motor speed
-    MotorSpeed = 50000
-    
-    def forward(speed):
-       motor_A1.duty_u16(speed)
-       motor_A2.duty_u16(0)
-    
-       motor_B1.duty_u16(speed)
-       motor_B2.duty_u16(0)
-    
-       motor_C1.duty_u16(speed)
-       motor_C2.duty_u16(0)
-    
-       motor_D1.duty_u16(speed)
-       motor_D2.duty_u16(0)
-    
-    def stop():
-       motor_A1.duty_u16(0)
-       motor_A2.duty_u16(0)
-    
-       motor_B1.duty_u16(0)
-       motor_B2.duty_u16(0)
-    
-       motor_C1.duty_u16(0)
-       motor_C2.duty_u16(0)
-    
-       motor_D1.duty_u16(0)
-       motor_D2.duty_u16(0)
-    
-    def backward(speed):
-       motor_A1.duty_u16(0)
-       motor_A2.duty_u16(speed)
-    
-       motor_B1.duty_u16(0)
-       motor_B2.duty_u16(speed)
-    
-       motor_C1.duty_u16(0)
-       motor_C2.duty_u16(speed)
-    
-       motor_D1.duty_u16(0)
-       motor_D2.duty_u16(speed)
-    
-    def left(speed):
-       motor_A1.duty_u16(0)
-       motor_A2.duty_u16(speed)
-    
-       motor_B1.duty_u16(0)
-       motor_B2.duty_u16(speed)
-    
-       motor_C1.duty_u16(speed)
-       motor_C2.duty_u16(0)
-    
-       motor_D1.duty_u16(speed)
-       motor_D2.duty_u16(0)
-    
-    while True:
-        distance = sensor.distance_cm()
-        print(distance)
-        if distance > 12:
-            forward(MotorSpeed)
-        else:
-            backward(MotorSpeed)
-            buzzer.value(1)
-            time.sleep(0.3)
-            buzzer.value(0)
-            left(MotorSpeed)
-            time.sleep(0.2)
-            stop()
+        //"""REX 8in1 Rover Bot"""
+        //Check the web site for Robots https://rex-rdt.readthedocs.io/en/latest/
+        #include <DabbleESP32.h>
+        #include <Arduino.h>
         
+        //Define Motor Pins
+        #define MotorA1 15 // Forward
+        #define MotorA2 23 // Backward
+        
+        #define MotorB1 32 // Forward
+        #define MotorB2 33 // Backward
+        
+        #define MotorC1 5 // Forward
+        #define MotorC2 4 // Backward
+        
+        #define MotorD1 27 // Forward
+        #define MotorD2 14 // Backward
+        
+        //define buzzer pin named "horn"
+        #define horn 25
+        
+        void setup() {
+          pinMode(horn, OUTPUT);
+        
+          pinMode(MotorA1, OUTPUT);
+          pinMode(MotorA2, OUTPUT);
+        
+          pinMode(MotorB1, OUTPUT);
+          pinMode(MotorB2, OUTPUT);
+        
+          pinMode(MotorC1, OUTPUT);
+          pinMode(MotorC2, OUTPUT);
+        
+          pinMode(MotorD1, OUTPUT);
+          pinMode(MotorD2, OUTPUT);
+          
+          Serial.begin(115200);  // make sure your Serial Monitor is also set at this baud rate.
+          Dabble.begin("REX_ROBOT"); //set bluetooth name of your device
+        }
+        
+        void loop() {
+          Dabble.processInput();
+          stop();
+          if (GamePad.isUpPressed())
+          {
+            forward();
+          }
+        
+          if (GamePad.isDownPressed())
+          {
+            backward();
+          }
+        
+          if (GamePad.isLeftPressed())
+          {
+            left();
+          }
+        
+          if (GamePad.isRightPressed())
+          {
+            right();
+          }
+        
+          if (GamePad.isSquarePressed())
+          {
+            Serial.print("Square");
+          }
+        
+          if (GamePad.isCirclePressed())
+          {
+            Serial.print("Circle");
+          }
+        
+          if (GamePad.isCrossPressed())
+          {
+            Serial.print("Cross");
+            digitalWrite(horn, HIGH);
+            delay(100);
+            digitalWrite(horn, LOW);
+          }
+        
+          if (GamePad.isTrianglePressed())
+          {
+            Serial.print("Triangle");
+          }
+        
+          if (GamePad.isStartPressed())
+          {
+            Serial.print("Start");
+          }
+        
+          if (GamePad.isSelectPressed())
+          {
+            Serial.print("Select");
+          }
+        }
+        
+        void forward() { 
+          digitalWrite(MotorA1, HIGH);
+          digitalWrite(MotorA2, LOW);
+        
+          digitalWrite(MotorB1, HIGH);
+          digitalWrite(MotorB2, LOW);
+        
+          digitalWrite(MotorC1, HIGH);
+          digitalWrite(MotorC2, LOW);
+        
+          digitalWrite(MotorD1, HIGH);
+          digitalWrite(MotorD2, LOW);
+        }
+        
+        void right() { 
+          digitalWrite(MotorA1, HIGH);
+          digitalWrite(MotorA2, LOW);
+        
+          digitalWrite(MotorB1, HIGH);
+          digitalWrite(MotorB2, LOW);
+        
+          digitalWrite(MotorC1, LOW);
+          digitalWrite(MotorC2, HIGH);
+        
+          digitalWrite(MotorD1, LOW);
+          digitalWrite(MotorD2, HIGH);
+        }
+        
+        void left() { 
+          digitalWrite(MotorA1, LOW);
+          digitalWrite(MotorA2, HIGH);
+        
+          digitalWrite(MotorB1, LOW);
+          digitalWrite(MotorB2, HIGH);
+        
+          digitalWrite(MotorC1, HIGH);
+          digitalWrite(MotorC2, LOW);
+        
+          digitalWrite(MotorD1, HIGH);
+          digitalWrite(MotorD2, LOW);
+        }
+        
+        void stop() {
+        
+          digitalWrite(MotorA1, LOW);
+          digitalWrite(MotorA2, LOW);
+        
+          digitalWrite(MotorB1, LOW);
+          digitalWrite(MotorB2, LOW);
+        
+          digitalWrite(MotorC1, LOW);
+          digitalWrite(MotorC2, LOW);
+        
+          digitalWrite(MotorD1, LOW);
+          digitalWrite(MotorD2, LOW);
+        
+        }
+        
+        void backward() { 
+          digitalWrite(MotorA1, LOW);
+          digitalWrite(MotorA2, HIGH);
+        
+          digitalWrite(MotorB1, LOW);
+          digitalWrite(MotorB2, HIGH);
+        
+          digitalWrite(MotorC1, LOW);
+          digitalWrite(MotorC2, HIGH);
+        
+          digitalWrite(MotorD1, LOW);
+          digitalWrite(MotorD2, HIGH);
+        }
+
+
+RoverBot MicroPython Code
+-------------------------------
+
+
+.. code-block::
+
+        from machine import Pin, PWM
+        import bluetooth
+        from rex import BLESimplePeripheral
+        import time
+        
+        # Create a Bluetooth Low Energy (BLE) object
+        ble = bluetooth.BLE()
+        
+        # Create an instance of the BLESimplePeripheral class with the BLE object
+        sp = BLESimplePeripheral(ble)
+        
+        #motorA
+        motor_A1 = PWM(Pin(15))
+        motor_A1.duty_u16(0)
+        motor_A2 = PWM(Pin(23))
+        motor_A2.duty_u16(0)
+        
+        #motorB
+        motor_B1 = PWM(Pin(32))
+        motor_B1.duty_u16(0)
+        motor_B2 = PWM(Pin(33))
+        motor_B2.duty_u16(0)
+        
+        #motorC
+        motor_C1 = PWM(Pin(5))
+        motor_C1.duty_u16(0)
+        motor_C2 = PWM(Pin(4))
+        motor_C2.duty_u16(0)
+        
+        #motorD
+        motor_D1 = PWM(Pin(27))
+        motor_D1.duty_u16(0)
+        motor_D2 = PWM(Pin(14))
+        motor_D2.duty_u16(0)
+        
+        #buzzer
+        buzzer = Pin(25, Pin.OUT)
+        
+        playBuzzer = 0
+        buzzerStartTime = 0
+        
+        #default motor speed
+        MotorSpeed = 65535
+        
+        def forward(speed):
+           motor_A1.duty_u16(speed)
+           motor_A2.duty_u16(0)
+        
+           motor_B1.duty_u16(speed)
+           motor_B2.duty_u16(0)
+        
+           motor_C1.duty_u16(speed)
+           motor_C2.duty_u16(0)
+        
+           motor_D1.duty_u16(speed)
+           motor_D2.duty_u16(0)
+           return
+        
+        def backward(speed):
+           motor_A1.duty_u16(0)
+           motor_A2.duty_u16(speed)
+        
+           motor_B1.duty_u16(0)
+           motor_B2.duty_u16(speed)
+        
+           motor_C1.duty_u16(0)
+           motor_C2.duty_u16(speed)
+        
+           motor_D1.duty_u16(0)
+           motor_D2.duty_u16(speed)
+        
+        def right(speed):
+           motor_A1.duty_u16(speed)
+           motor_A2.duty_u16(0)
+        
+           motor_B1.duty_u16(speed)
+           motor_B2.duty_u16(0)
+        
+           motor_C1.duty_u16(0)
+           motor_C2.duty_u16(speed)
+        
+           motor_D1.duty_u16(0)
+           motor_D2.duty_u16(speed)
+        
+        def left(speed):
+           motor_A1.duty_u16(0)
+           motor_A2.duty_u16(speed)
+        
+           motor_B1.duty_u16(0)
+           motor_B2.duty_u16(speed)
+        
+           motor_C1.duty_u16(speed)
+           motor_C2.duty_u16(0)
+        
+           motor_D1.duty_u16(speed)
+           motor_D2.duty_u16(0)
+        
+        def stop():
+           motor_A1.duty_u16(0)
+           motor_A2.duty_u16(0)
+        
+           motor_B1.duty_u16(0)
+           motor_B2.duty_u16(0)
+        
+           motor_C1.duty_u16(0)
+           motor_C2.duty_u16(0)
+        
+           motor_D1.duty_u16(0)
+           motor_D2.duty_u16(0)
+        
+        # Define a callback function to handle received data
+        def on_rx(data):
+            global buzzerStartTime, playBuzzer
+            print("Data received: ", data)  # Print the received data
+            
+            if data == b'\xff\x01\x01\x01\x02\x00\x01\x00': #up
+                forward(MotorSpeed)
+            elif data == b'\xff\x01\x01\x01\x02\x00\x02\x00': #down
+                backward(MotorSpeed)
+            elif data == b'\xff\x01\x01\x01\x02\x00\x04\x00': #left
+                left(MotorSpeed)
+            elif data == b'\xff\x01\x01\x01\x02\x00\x08\x00': #right
+                right(MotorSpeed)
+            elif data == b'\xff\x01\x01\x01\x02\x04\x00\x00': #trigle
+                print("trigle")
+            elif data == b'\xff\x01\x01\x01\x02 \x00\x00': #square
+                print("square")
+            elif data == b'\xff\x01\x01\x01\x02\x08\x00\x00': #circle
+                print("circle")
+            elif data == b'\xff\x01\x01\x01\x02\x10\x00\x00': #cross
+                buzzerStartTime = time.ticks_ms()
+                playBuzzer = 1
+                buzzer.value(1)
+            elif data == b'\xff\x01\x01\x01\x02\x02\x00\x00': #select
+                print("select")
+            elif data == b'\xff\x01\x01\x01\x02\x01\x00\x00': #start
+                print("start")
+            else:
+                stop()
+        
+        while True:
+            currentTime = time.ticks_ms()
+            if (playBuzzer == 1) and (time.ticks_diff(currentTime, buzzerStartTime) > 1000):
+                 buzzer.value(0)
+                 playBuzzer = 0
+                 
+            if sp.is_connected():  # Check if a BLE connection is established
+                sp.on_write(on_rx)  # Set the callback function for data reception
+        
+        
+        
+                
