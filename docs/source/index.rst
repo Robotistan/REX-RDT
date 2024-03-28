@@ -25,9 +25,11 @@ There is a port for connecting and 1 buzzer and switch integrated into the card,
    ArmBot <armbot/armbot>
    BalanceBot <balancebot/balancebot>
    OmniBot <omnibot/omnibot>
-   RoverBot <roverbot>
-   Wi-Bot <wibot>
+   RoverBot <roverbot/roverbot>
+   WiBot <wibot/wibot>
    SonicBot <sonicbot/sonicbot>
+   TrackerBot <trackerbot/trackerbot>
+   SumoBot <sumobot/sumobot>
    REX Pin Diagram <rex-pinout/rex-pinout>
    Components <components/components>
 
