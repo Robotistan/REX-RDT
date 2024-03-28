@@ -28,7 +28,7 @@ There is a port for connecting and 1 buzzer and switch integrated into the card,
    RoverBot <roverbot>
    Wi-Bot <wibot>
    SonicBot <sonicbot/sonicbot>
-   REX Pinout <rex-pinout/rex-pinout>
+   REX Pin Diagram <rex-pinout/rex-pinout>
    Components <components/components>
 
 
