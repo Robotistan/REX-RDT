@@ -9,7 +9,7 @@ Line/IR Follower Sensor
 Line follower sensors detect the presence of a black line by emitting infrared (IR) light and detecting the light levels that return to the sensor. They do this using two components:
 
 
-+============+============================+
++------------+----------------------------+
 | An Emitter | A Light Sensor (receiver)  | 
 +------------+----------------------------+
 
