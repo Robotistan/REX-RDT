@@ -13,7 +13,7 @@ ESP32 WROOM 32E Pinout
 .. warning::
   Please do not connect an external battery, if you use 18650 batteries while using the card.
 
-.. image:: /../_static/esp-pinout.png
+.. image:: /../_static/rex-mainboard.png
 
 
 
