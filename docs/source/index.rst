@@ -30,6 +30,7 @@ There is a port for connecting and 1 buzzer and switch integrated into the card,
    SonicBot <sonicbot/sonicbot>
    TrackerBot <trackerbot/trackerbot>
    SumoBot <sumobot/sumobot>
+   REX Datasheet <datasheet/datasheet>
    REX Pin Diagram <rex-pinout/rex-pinout>
    Components <components/components>
 
