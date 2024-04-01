@@ -21,7 +21,7 @@ There is a port for connecting and 1 buzzer and switch integrated into the card,
    :maxdepth: 1
    :caption: Contents:
 
-   What is REX 8in1? <rex>
+   What Is REX 8in1? <what-is-rex/what-is-rex>
    ArmBot <armbot/armbot>
    BalanceBot <balancebot/balancebot>
    OmniBot <omnibot/omnibot>
