@@ -1,6 +1,6 @@
-#############
-What Is REX
-#############
+########################
+What Is REX 8in1
+########################
 
 REX is an educational robot set developed by the Robotistan R&D team. The REX 8 in 1 robot set eliminates difficulties in circuit setup, such as connection points and cable confusion, with the REX Main Board using ESP32 infrastructure. Additionally, Arduino IDE, Thonny IDE, and
 MicroBlocks IDE provideS great flexibility for users in programming. The REX main board is a special main board designed to facilitate the mechanical and electronic setup of robots in the 8 in 1 set. This board, which uses the ESP32E processor, has connectors to link all the
