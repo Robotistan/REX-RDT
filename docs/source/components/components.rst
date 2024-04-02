@@ -13,7 +13,7 @@ Line follower sensors detect the presence of a black line by emitting infrared (
 | An Emitter | A Light Sensor (receiver)  | 
 +------------+----------------------------+
 
-- How to use a line sensor
+- How to use a line follower sensor
 You know a bit more how a line follower sensor works, now you should learn how to use it.
 
 - VCC needs to be connected to a voltage in between 3.3 and 5V, to power the device
